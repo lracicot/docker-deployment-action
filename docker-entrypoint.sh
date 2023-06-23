@@ -90,6 +90,7 @@ fi
 
 if ! [ -z "$INPUT_COPY_STACK_FILE" ] && [ $INPUT_COPY_STACK_FILE = 'true' ] ; then
   execute_ssh "mkdir -p $INPUT_DEPLOY_PATH/stacks || true"
+  execute_ssh "mkdir -p $INPUT_DEPLOY_PATH/$(dirname $INPUT_STACK_FILE_NAME) || true"
   FILE_NAME="docker-stack-$(date +%Y%m%d%s).yaml"
 
   scp -i "$HOME/.ssh/id_rsa" \
